@@ -1,0 +1,49 @@
+<div class="container-fluid">
+    <div class="row drinksmenu">
+        <div class="col-xs-2"></div>
+
+        <div class="col-xs-6">
+
+            <div class="row">
+            <div class="col-xs-5">
+            <h1> Drinks </h1>
+            <p ng-show="loadingDrinks"> Just fetching today's menu! </p>
+            <img src="ClientApp/images/spinner.gif" ng-show="loadingDrinks"/>
+            <table class="table" ng-show="!loadingDrinks">
+                <thead>
+                    <th> Drink </th>
+                    <th> Price </th>
+                    <th> Number</th>
+                </thead>
+                <tbody ng-repeat="drink in drinks">
+                    <td> {{drink.description}} </td>
+                    <td> {{drink.price}} </td>
+                    <td> 0 </td>
+                </tbody>
+            </table>
+            </div></div>
+
+
+            <div class="row">
+            <div class="col-xs-5">
+                <h1> Options </h1>
+            <p ng-show="loadingOptions"> Just fetching today's menu! </p>
+            <img src="ClientApp/images/spinner.gif" ng-show="loadingOptions"/>
+            <table class="table" ng-show="!loadingOptions">
+                <thead>
+                    <th> Option </th>
+                    <th> Price </th>
+                    <th> Number</th>
+                </thead>
+                <tbody ng-repeat="option in options">
+                    <td> {{option.description}} </td>
+                    <td> {{option.price}} </td>
+                    <td> 0 </td>
+                </tbody>
+            </table>
+            </div></div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="acuCafe">
+<head>
+    <meta charset="UTF-8">
+    <title>AcuCafe</title>
+    <link rel="stylesheet" href="ClientApp/css/app.css">
+    <link rel="shortcut icon" href="ClientApp/images/acuCafeLogo.png">
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+
+</head>
+<body>
+    <div class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="col-xs-2"></div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"> The AcuCafe </a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="#"> Drinks Menu </a></li>
+            </ul>
+        </div>
+    </div>
+    <div ng-view></div>
+    <!-- TO DO - Gulp tasks  -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-route.js"></script>
+    <script src="ClientApp/app.js"></script>
+    <script src="ClientApp/js/controllers/drinkController.js"></script>
+    <script src="ClientApp/js/controllers/routeConfig.js"></script>
+</body>
+</html>
