@@ -1,0 +1,9 @@
+To do file:
+
+Design -
+    Centre the logo in the middle
+    make navribbon inverse with Cyan color
+    put an "orders" bit
+
+Functionality -
+    
