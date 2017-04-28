@@ -19,11 +19,13 @@
                     <th> Drink </th>
                     <th> Price </th>
                     <th> Number</th>
+                    <th> Add to Cart! </th>
                 </thead>
                 <tbody ng-repeat="drink in drinks">
-                    <td> {{drink.description}} </td>
-                    <td> {{drink.price}} </td>
-                    <td> 0 </td>
+                    <td class="col-sm-3"> {{drink.description}} </td>
+                    <td class="col-sm-3"> {{drink.price}} </td>
+                    <td class="col-sm-4"> <input class="col-sm-12" type="number" ng-model="numberofDrinks"/> </td>
+                    <td class="col-sm-2"> <button class="btn btn-default" ng-click="addDrinksToCart(drink, numberofDrinks)"> +  </button> </td>
                 </tbody>
             </table>
             </div></div>
@@ -39,14 +41,21 @@
                     <th> Option </th>
                     <th> Price </th>
                     <th> Number</th>
+                    <th> Add to Cart! </th>
                 </thead>
                 <tbody ng-repeat="option in options">
-                    <td> {{option.description}} </td>
-                    <td> {{option.price}} </td>
-                    <td> 0 </td>
+                    <td class="col-sm-3"> {{option.description}} </td>
+                    <td class="col-sm-3"> {{option.price}} </td>
+                    <td class="col-sm-4"> <input class="col-sm-12" type="number" ng-model="numberOfItems"/> </td>
+                    <td class="col-sm-2"> <button class="btn btn-default" ng-click="addOptionsToCart(option, numberOfItems)"> +  </button> </td>
                 </tbody>
             </table>
-            </div></div>
+                <h2> Total £{{ total }} </h2>
+            <button class="btn btn-danger" ng-click="submitOrder()"> Submit Order </button>
+            </div>
+
+
+            </div>
 
             </div>
         </div>
