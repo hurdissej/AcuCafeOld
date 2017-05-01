@@ -10,13 +10,12 @@
         ]);
 
     function drinkController($scope, $http,$routeParams){
-         $scope.drinksCart = [];
-         $scope.optionsCart = [];
-         $scope.options = [];
          $scope.cart = [];
-         $scope.total = 0.00;
+         $scope.count = 0
          $scope.loadingDrinks = true;
          $scope.loadingOptions = true;
+         $scope.drink = 0;
+         $scope.optionIDs = [];
 
         // To do - Code own CORS //
          $http.get('https://cors-anywhere.herokuapp.com/http://acucafe.acumen.rocks/api/Drink/')
@@ -34,22 +33,42 @@
                  $scope.loadingOptions = false;
              });
         //
-        $scope.addDrinksToCart = function(acuOrder, option){
-            $scope.drinksCart.push(acuOrder);
-            //var value = Math.round((acuOrder.price * option)*100)/100;
-            $scope.total += Math.round((acuOrder.price * option)*100)/100;
-            console.log($scope.drinksCart);
+        $scope.addDrink = function (drinkID) {
+            $scope.drink = drinkID;
         };
 
-        $scope.addOptionsToCart = function(acuOrder, option){
-            $scope.optionsCart.push(acuOrder);
-            //var value = Math.round((acuOrder.price * option)*100)/100;
-            $scope.total += Math.round((acuOrder.price * option)*100)/100;
-            console.log($scope.optionsCart);
+        $scope.toggleSelection = function toggleSelection(optionID) {
+            var idx = $scope.optionIDs.indexOf(optionID);
+
+            // Is currently selected
+            if (idx > -1) {
+              $scope.optionIDs.splice(idx, 1);
+              console.log($scope.optionIDs);
+            }
+             // Is newly selected
+            else {
+                $scope.optionIDs.push(optionID);
+                console.log($scope.optionIDs)
+            }
         };
 
-        $scope.submitOrder = function(cart){
-            console.log(drinksCart);
-        }
+        $scope.orderDrink= function(optionIDs){
+            var drinks = {
+                "drinks": [
+                        {
+                            "drinkId": $scope.drink,
+                            "optionIds": $scope.optionIDs
+                        }]};
+            $http.post('https://cors-anywhere.herokuapp.com/http://acucafe.acumen.rocks/api/Order', drinks)
+            .then(function(response) {
+                    alert("Order posted!");
+                    console.log(drinks);
+                },
+                function () {
+                    alert("Could not post your order");
+                });
+
+        };
+
     }
 })();

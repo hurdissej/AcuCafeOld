@@ -18,40 +18,51 @@
                 <thead>
                     <th> Drink </th>
                     <th> Price </th>
-                    <th> Number</th>
-                    <th> Add to Cart! </th>
+                    <th> Order! </th>
                 </thead>
                 <tbody ng-repeat="drink in drinks">
                     <td class="col-sm-3"> {{drink.description}} </td>
                     <td class="col-sm-3"> {{drink.price}} </td>
-                    <td class="col-sm-4"> <input class="col-sm-12" type="number" ng-model="numberofDrinks"/> </td>
-                    <td class="col-sm-2"> <button class="btn btn-default" ng-click="addDrinksToCart(drink, numberofDrinks)"> +  </button> </td>
+                    <td class="col-sm-2"> <button type="button" class="btn btn-primary btn-sm" ng-click="addDrink(drink.id)" data-toggle="modal" data-target="#myModal"> +  </button> </td>
                 </tbody>
             </table>
             </div></div>
 
 
-            <div class="row">
-            <div class="col-xs-5">
-                <h1> Options </h1>
-            <p ng-show="loadingOptions"> Just fetching today's menu! </p>
-            <img src="ClientApp/images/spinner.gif" ng-show="loadingOptions"/>
-            <table class="table" ng-show="!loadingOptions">
-                <thead>
-                    <th> Option </th>
-                    <th> Price </th>
-                    <th> Number</th>
-                    <th> Add to Cart! </th>
-                </thead>
-                <tbody ng-repeat="option in options">
-                    <td class="col-sm-3"> {{option.description}} </td>
-                    <td class="col-sm-3"> {{option.price}} </td>
-                    <td class="col-sm-4"> <input class="col-sm-12" type="number" ng-model="numberOfItems"/> </td>
-                    <td class="col-sm-2"> <button class="btn btn-default" ng-click="addOptionsToCart(option, numberOfItems)"> +  </button> </td>
-                </tbody>
-            </table>
-                <h2> Total £{{ total }} </h2>
-            <button class="btn btn-danger" ng-click="submitOrder()"> Submit Order </button>
+            <!-- Pop-up -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel"> Milk and sugar with that? </h4>
+                  </div>
+                  <div class="modal-body">
+                   <table class="table" ng-show="!loadingOptions">
+                            <thead>
+                                <th> Option </th>
+                                <th> Price </th>
+                                <th> Add! </th>
+                            </thead>
+                            <tbody ng-repeat="option in options">
+                                <td class="col-sm-3"> {{option.description}} </td>
+                                <td class="col-sm-3"> {{option.price}} </td>
+                                <td class="col-sm-3"> <input
+                                                           type="checkbox"
+                                                           name="selectedOptions[]"
+                                                           value= "{{option.id}}"
+                                                           ng-checked="selection.indexOf(option.id) > -1"
+                                                           ng-click="toggleSelection(option.id)"> </td>
+                            </tbody>
+                        </table>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="orderDrink()"> Order</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             </div>
 
 
