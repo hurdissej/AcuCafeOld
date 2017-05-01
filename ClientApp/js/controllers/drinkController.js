@@ -10,14 +10,12 @@
         ]);
 
     function drinkController($scope, $http,$routeParams){
-         $scope.cart = [];
-         $scope.count = 0
          $scope.loadingDrinks = true;
          $scope.loadingOptions = true;
          $scope.drink = 0;
          $scope.optionIDs = [];
 
-        // To do - Code own CORS //
+        // To do - Code own CORS function or update client side //
          $http.get('https://cors-anywhere.herokuapp.com/http://acucafe.acumen.rocks/api/Drink/')
              .then(function(response){
                 $scope.drinks = response.data;
@@ -37,7 +35,7 @@
             $scope.drink = drinkID;
         };
 
-        $scope.toggleSelection = function toggleSelection(optionID) {
+        $scope.optionSelection = function toggleSelection(optionID) {
             var idx = $scope.optionIDs.indexOf(optionID);
 
             // Is currently selected
