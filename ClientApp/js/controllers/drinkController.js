@@ -23,7 +23,7 @@
          $scope.total = 0;
          $scope.runningTotal = 0;
 
-        // To do - Code own CORS function or update client side //
+        // To do - Code own CORS function or update server side //
          $http.get('https://cors-anywhere.herokuapp.com/http://acucafe.acumen.rocks/api/Drink/')
              .then(function(response){
                 $scope.drinks = response.data;
