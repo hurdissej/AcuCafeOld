@@ -10,10 +10,18 @@
         ]);
 
     function drinkController($scope, $http,$routeParams){
-         $scope.loadingDrinks = true;
+        // For API
+        $scope.loadingDrinks = true;
          $scope.loadingOptions = true;
          $scope.drink = 0;
          $scope.optionIDs = [];
+        // For UI
+         $scope.basketEmpty = true;
+         $scope.userDrink = '';
+         $scope.userOptions = [];
+         $scope.allOrders = [];
+         $scope.total = 0;
+         $scope.runningTotal = 0;
 
         // To do - Code own CORS function or update client side //
          $http.get('https://cors-anywhere.herokuapp.com/http://acucafe.acumen.rocks/api/Drink/')
@@ -31,36 +39,65 @@
                  $scope.loadingOptions = false;
              });
         //
-        $scope.addDrink = function (drinkID) {
+        $scope.addDrink = function (drinkID, description, price) {
+            price = Math.round(price *100) /100;
             $scope.drink = drinkID;
+            $scope.userDrink = description;
+            $scope.runningTotal += price ;
+            console.log($scope.runningTotal);
         };
 
-        $scope.optionSelection = function toggleSelection(optionID) {
+        $scope.optionSelection = function toggleSelection(optionID, optionDescription, optionPrice) {
             var idx = $scope.optionIDs.indexOf(optionID);
-
+            var price = Math.round(optionPrice * 100)/100;
             // Is currently selected
             if (idx > -1) {
-              $scope.optionIDs.splice(idx, 1);
-              console.log($scope.optionIDs);
+                $scope.optionIDs.splice(idx, 1);
+                $scope.userOptions.splice(idx, 1);
+                $scope.runningTotal -= price ;
             }
              // Is newly selected
             else {
                 $scope.optionIDs.push(optionID);
-                console.log($scope.optionIDs)
+                $scope.userOptions.push(optionDescription);
+                $scope.runningTotal += price ;
             }
         };
 
+        $scope.exit = function(){
+            $scope.runningTotal = 0;
+        };
+
         $scope.orderDrink= function(optionIDs){
+            // Create User friendly data version for display
+            var userfriendlyDrinks = {
+                            "drink": $scope.userDrink,
+                            "options": $scope.userOptions
+                        };
+
+            // Create API data
             var drinks = {
                 "drinks": [
                         {
                             "drinkId": $scope.drink,
                             "optionIds": $scope.optionIDs
                         }]};
+
             $http.post('https://cors-anywhere.herokuapp.com/http://acucafe.acumen.rocks/api/Order', drinks)
             .then(function(response) {
-                    alert("Order posted!");
-                    console.log(drinks);
+                    // To do make some nice Bootstrap pop-ups //
+                    alert("Your order will be with you shortly!!");
+
+                    // Clear UI
+                    $scope.allOrders.push(userfriendlyDrinks);
+                    $scope.basketEmpty = false;
+                    $scope.userOptions = [];
+                    $scope.total += $scope.runningTotal;
+                    $scope.runningTotal = 0;
+                    // Uncheck checkboxes
+                    angular.forEach($scope.options, function(option) {
+                        option.Selected = false;
+                    })
                 },
                 function () {
                     alert("Could not post your order");
