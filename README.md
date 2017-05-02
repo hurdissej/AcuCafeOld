@@ -2,6 +2,8 @@
 
 A *very* small cafe with an online ordering interface
 
+Just clone the repository and open Index.html
+
 ## Design Choices
 
 I kept this simple and used Angular JS 1.6 as the javascript framework 
