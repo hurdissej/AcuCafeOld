@@ -17,12 +17,12 @@ I kept it quite light on CSS and decided to use bootstraps responsive design and
 
 The main thing I didn't get to was *automated tests* - I will get to these soon but as I haven't used protractor before I may need a few days to get these going
 
-#Functionality
+###Functionality
 The ability to Cancel an order from the "My orders" box would be nice
-#Technical
+###Technical
 I also ran into some cross origin probelms so I used an out the box service to add the cors headers in - If I had some time I would have done this myself
 I am using stored minified files for dev purposes but shouldn't in production
-#UI
+###UI
 The Pop ups are standard browser pop ups and I would like to make some nice shiny ones
 The UI could also do with tidying up a bit as well
 
