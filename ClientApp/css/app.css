@@ -37,3 +37,9 @@
 .table {
     margin-top: 20px;
 }
+
+#total {
+    border-top-style: solid;
+    border-top-color: black;
+    border-top-width: 3px;
+}

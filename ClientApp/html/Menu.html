@@ -37,10 +37,10 @@
                 <div class="optionItem" ng-repeat="option in order.options">
                     <h6> {{ option }} </h6>
                     </div>
-
-
                 </div>
-                <h4 ng-show="!basketEmpty"> Total: £{{ total }}  </h4>
+                <div ng-show="!basketEmpty" id="total">
+                    <h4 > Total: £{{ total }}  </h4>
+                </div>
             </div>
             </div>
 
