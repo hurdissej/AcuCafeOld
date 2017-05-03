@@ -11,7 +11,7 @@
 
     function drinkController($scope, $http,$routeParams){
         // For API
-        $scope.loadingDrinks = true;
+         $scope.loadingDrinks = true;
          $scope.loadingOptions = true;
          $scope.drink = 0;
          $scope.optionIDs = [];
