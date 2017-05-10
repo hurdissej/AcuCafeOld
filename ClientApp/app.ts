@@ -1,10 +1,13 @@
+
 /**
  * Created by elliot.hurdiss on 26/04/2017.
  */
-namespace app {
+/// <reference path="js/services/drinkService.js" />
+
+namespace acuCafe {
     'use strict';
-    angular.module('acuCafe', [
-        'ngRoute'
-    ]);
+        angular.module('acuCafe', ['ngRoute']);
+
 }
+
 

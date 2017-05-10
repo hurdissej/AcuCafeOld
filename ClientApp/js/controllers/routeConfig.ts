@@ -5,7 +5,7 @@
 // In case we add more pages in later on  //
 
 
-namespace routeConfig {
+namespace app {
     'use strict';
 
     angular.module('acuCafe')

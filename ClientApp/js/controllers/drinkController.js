@@ -1,13 +1,14 @@
 /**
  * Created by elliot.hurdiss on 26/04/2017.
  */
-var app;
-(function (app) {
+var acuCafe;
+(function (acuCafe) {
     'use strict';
     var drinkController = (function () {
-        function drinkController($http) {
+        function drinkController($http, drinkService) {
             var _this = this;
             this.$http = $http;
+            this.drinkService = drinkService;
             this.loadingDrinks = true;
             this.loadingOptions = true;
             this.drink = 0;
@@ -24,6 +25,7 @@ var app;
                 _this.drinks = result;
                 _this.loadingDrinks = false;
             });
+            this.serviceTest = drinkService.getAllDrinks();
             this.getOptions().then(function (result) {
                 _this.options = result;
                 _this.loadingOptions = false;
@@ -109,11 +111,9 @@ var app;
         ;
         return drinkController;
     }());
-    drinkController.$inject = ['$http'];
-    app.drinkController = drinkController;
+    drinkController.$inject = ['$http', 'drinkService'];
+    acuCafe.drinkController = drinkController;
     angular
         .module('acuCafe')
-        .controller('drinkController', [
-        '$http', drinkController
-    ]);
-})(app || (app = {}));
+        .controller('drinkController', ['$http', 'drinkService', drinkController]);
+})(acuCafe || (acuCafe = {}));

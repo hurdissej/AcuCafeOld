@@ -1,10 +1,9 @@
 /**
  * Created by elliot.hurdiss on 26/04/2017.
  */
-var app;
-(function (app) {
+/// <reference path="js/services/drinkService.js" />
+var acuCafe;
+(function (acuCafe) {
     'use strict';
-    angular.module('acuCafe', [
-        'ngRoute'
-    ]);
-})(app || (app = {}));
+    angular.module('acuCafe', ['ngRoute']);
+})(acuCafe || (acuCafe = {}));

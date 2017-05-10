@@ -3,12 +3,12 @@
  */
 
 
-namespace app {
+namespace acuCafe {
     'use strict';
 
 
     export class drinkController {
-        static $inject = ['$http'];
+        static $inject = ['$http', 'drinkService'];
         loadingDrinks = true;
         loadingOptions = true;
         drink = 0;
@@ -21,12 +21,16 @@ namespace app {
         runningTotal = 0;
         drinks = [];
         options = [];
+        serviceTest: any;
 
-        constructor(public $http: angular.IHttpService){
+        constructor(private $http: angular.IHttpService, private drinkService: any ){
             this.getDrinks().then((result) => {
                 this.drinks = result;
                 this.loadingDrinks = false;
             });
+
+            this.serviceTest = drinkService.getAllDrinks();
+
             this.getOptions().then((result) => {
                 this.options = result;
                 this.loadingOptions = false;
@@ -118,10 +122,8 @@ namespace app {
 
     }
 
-    angular
-        .module('acuCafe')
-        .controller('drinkController',[
-             '$http', drinkController
-        ]);
+        angular
+            .module('acuCafe')
+            .controller('drinkController',['$http', 'drinkService', drinkController]);
 
 }
