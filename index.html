@@ -8,24 +8,11 @@
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
     <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
 
+
 </head>
 <body>
-<!--
-    Navbar incase we want to add more pages in!
-    <div class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="col-xs-3"></div>
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#"> The AcuCafe </a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li><a href="#"> Drinks Menu </a></li>
-            </ul>
-        </div>
-    </div>
-    -->
     <div ng-view></div>
-    <!-- TO DO - use in production
+    <!-- TO DO - add all to package.json and write a gulp task to install
     <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-route.js"></script>
     -->
@@ -34,7 +21,10 @@
     <script src="ClientApp/static/angular.min.js"></script>
     <script src="ClientApp/static/angular-route.min.js"></script>
     <script src="ClientApp/app.js"></script>
+    <script src="ClientApp/js/services/drinkService.js"></script>
+    <script src="ClientApp/js/services/optionService.js"></script>
     <script src="ClientApp/js/controllers/drinkController.js"></script>
     <script src="ClientApp/js/controllers/routeConfig.js"></script>
+
 </body>
 </html>

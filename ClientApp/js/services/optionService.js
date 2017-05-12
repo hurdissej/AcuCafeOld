@@ -1,0 +1,24 @@
+/**
+ * Created by hurdissej on 12/05/2017.
+ */
+(function(){
+    angular
+        .module('acuCafe')
+        .factory('optionService', ['$http' , optionService]);
+
+    function optionService($http){
+        return{
+        getAllOptions: getAllOptions()
+    };
+
+    function getAllOptions() {
+        return this.$http({
+                method: 'get',
+                url: 'https://cors-anywhere.herokuapp.com/http://acucafe.acumen.rocks/api/Option/'
+            }).then(function (result) {
+                return result.data;
+            })
+
+        }
+    }
+}());

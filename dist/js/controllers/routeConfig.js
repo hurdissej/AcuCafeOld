@@ -2,8 +2,8 @@
  * Created by elliot.hurdiss on 26/04/2017.
  */
 // In case we add more pages in later on  //
-var app;
-(function (app) {
+var routeConfig;
+(function (routeConfig) {
     'use strict';
     angular.module('acuCafe')
         .config(initDebug)
@@ -20,4 +20,4 @@ var app;
         })
             .otherwise('/');
     }
-})(app || (app = {}));
+})(routeConfig || (routeConfig = {}));
