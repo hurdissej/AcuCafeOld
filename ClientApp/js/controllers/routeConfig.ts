@@ -23,6 +23,11 @@ namespace app {
                 controller: 'drinkController',
                 controllerAs: 'vm'
             })
+            .when('/admin', {
+                templateUrl: 'ClientApp/html/admin.html',
+                controller: 'adminController',
+                controllerAs: 'vm'
+            })
             .otherwise('/')
     }
 }
