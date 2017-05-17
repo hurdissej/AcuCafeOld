@@ -24,8 +24,8 @@ namespace app {
                 controllerAs: 'vm'
             })
             .when('/admin', {
-                templateUrl: 'ClientApp/html/admin.html',
-                controller: 'adminController',
+                templateUrl: 'ClientApp/html/directives.html',
+                controller: 'dirControl',
                 controllerAs: 'vm'
             })
             .otherwise('/')
