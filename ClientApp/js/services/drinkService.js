@@ -13,6 +13,7 @@
         };
 
         function getAllDrinks(){
+
             return $http({
                 method: 'get',
                 url: 'https://cors-anywhere.herokuapp.com/http://acucafe.acumen.rocks/api/Drink/'

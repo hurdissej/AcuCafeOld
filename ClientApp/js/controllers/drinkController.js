@@ -5,10 +5,12 @@ var acuCafe;
 (function (acuCafe) {
     'use strict';
     var drinkController = (function () {
-        function drinkController($http, drinkService) {
+        function drinkController($http, drinkService, optionService, orderService) {
             var _this = this;
             this.$http = $http;
             this.drinkService = drinkService;
+            this.optionService = optionService;
+            this.orderService = orderService;
             this.loadingDrinks = true;
             this.loadingOptions = true;
             this.drink = 0;
@@ -21,12 +23,11 @@ var acuCafe;
             this.runningTotal = 0;
             this.drinks = [];
             this.options = [];
-            this.getDrinks().then(function (result) {
+            this.drinkService.getAllDrinks().then(function (result) {
                 _this.drinks = result;
                 _this.loadingDrinks = false;
             });
-            this.serviceTest = drinkService.getAllDrinks();
-            this.getOptions().then(function (result) {
+            optionService.getAllOptions().then(function (result) {
                 _this.options = result;
                 _this.loadingOptions = false;
             });
@@ -36,11 +37,9 @@ var acuCafe;
             this.drink = drinkID;
             this.userDrink = description;
             this.runningTotal += price;
-            console.log(this.runningTotal);
         };
         ;
         drinkController.prototype.optionSelection = function (optionID, optionDescription, optionPrice) {
-            console.log(optionID);
             var idx = this.optionIDs.indexOf(optionID);
             var price = Math.round(optionPrice * 100) / 100;
             // Is currently selected
@@ -60,22 +59,6 @@ var acuCafe;
             this.runningTotal = 0;
         };
         ;
-        drinkController.prototype.getDrinks = function () {
-            return this.$http({
-                method: 'get',
-                url: 'https://cors-anywhere.herokuapp.com/http://acucafe.acumen.rocks/api/Drink/'
-            }).then(function (result) {
-                return result.data;
-            });
-        };
-        drinkController.prototype.getOptions = function () {
-            return this.$http({
-                method: 'get',
-                url: 'https://cors-anywhere.herokuapp.com/http://acucafe.acumen.rocks/api/Option/'
-            }).then(function (result) {
-                return result.data;
-            });
-        };
         drinkController.prototype.orderDrink = function (optionIDs) {
             // Create User friendly data version for display
             var userfriendlyDrinks = {
@@ -101,19 +84,14 @@ var acuCafe;
             angular.forEach(this.options, function (option) {
                 option.Selected = false;
             });
-            this.$http.post('https://cors-anywhere.herokuapp.com/http://acucafe.acumen.rocks/api/Order', drinks)
-                .then(function () {
-                alert("Your order will be with you shortly!!");
-            }, function () {
-                alert("Could not post your order");
-            });
+            this.orderService.postOrders(drinks);
         };
         ;
         return drinkController;
     }());
-    drinkController.$inject = ['$http', 'drinkService'];
+    drinkController.$inject = ['$http', 'drinkService', 'optionService', 'orderService'];
     acuCafe.drinkController = drinkController;
     angular
         .module('acuCafe')
-        .controller('drinkController', ['$http', 'drinkService', drinkController]);
+        .controller('drinkController', drinkController);
 })(acuCafe || (acuCafe = {}));

@@ -8,11 +8,11 @@
 
     function optionService($http){
         return{
-        getAllOptions: getAllOptions()
+        getAllOptions: getAllOptions
     };
 
     function getAllOptions() {
-        return this.$http({
+        return  $http({
                 method: 'get',
                 url: 'https://cors-anywhere.herokuapp.com/http://acucafe.acumen.rocks/api/Option/'
             }).then(function (result) {

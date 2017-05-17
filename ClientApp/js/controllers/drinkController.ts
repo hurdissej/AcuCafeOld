@@ -20,10 +20,10 @@ namespace acuCafe {
         runningTotal = 0;
         drinks = [];
         options = [];
-        serviceTest: any;
+        static $inject: string[] = ['$http', 'drinkService', 'optionService', 'orderService'];
+        constructor(private $http: angular.IHttpService,private drinkService: any, private optionService: any, private orderService: any){
 
-        constructor(private $http: angular.IHttpService,private optionService: any, private drinkService: any ){
-            drinkService.getAllDrinks().then((result) => {
+            this.drinkService.getAllDrinks().then((result) => {
                 this.drinks = result;
                 this.loadingDrinks = false;
             });
@@ -39,11 +39,9 @@ namespace acuCafe {
             this.drink = drinkID;
             this.userDrink = description;
             this.runningTotal += price ;
-            console.log(this.runningTotal);
         };
 
         public optionSelection(optionID, optionDescription, optionPrice) {
-            console.log(optionID);
             const idx = this.optionIDs.indexOf(optionID);
             const price = Math.round(optionPrice * 100)/100;
             // Is currently selected
@@ -89,19 +87,14 @@ namespace acuCafe {
                 option.Selected = false;
             });
 
-            this.$http.post('https://cors-anywhere.herokuapp.com/http://acucafe.acumen.rocks/api/Order', drinks)
-            .then(function() {
-                alert("Your order will be with you shortly!!");
-                },
-                function () {
-                    alert("Could not post your order");
-                });
+            this.orderService.postOrders(drinks);
+
         };
 
     }
 
         angular
             .module('acuCafe')
-            .controller('drinkController',['$http', 'drinkService', 'optionService', drinkController]);
+            .controller('drinkController', drinkController);
 
 }
