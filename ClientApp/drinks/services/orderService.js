@@ -3,7 +3,7 @@
  */
 (function () {
     angular
-        .module('acuCafe')
+        .module('acuDrinks')
         .factory('orderService', ['$http', orderService]);
 
     function orderService($http) {

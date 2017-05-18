@@ -4,7 +4,7 @@
 (function() {
     'use strict';
     angular
-        .module('acuCafe')
+        .module('acuDrinks')
         .directive('orderDirective', orderDirective);
 
     function orderDirective() {

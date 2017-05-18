@@ -6,7 +6,9 @@
 
 namespace acuCafe {
     'use strict';
-        angular.module('acuCafe', ['ngRoute']);
+        angular.module('acuCore', ['ngRoute']);
+
+        angular.module('acuCafe', ['acuCore', 'acuDrinks']);
 
 }
 

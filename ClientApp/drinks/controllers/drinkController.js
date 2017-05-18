@@ -92,6 +92,6 @@ var acuCafe;
     drinkController.$inject = ['drinkService', 'optionService', 'orderService'];
     acuCafe.drinkController = drinkController;
     angular
-        .module('acuCafe')
+        .module('acuDrinks')
         .controller('drinkController', drinkController);
 })(acuCafe || (acuCafe = {}));

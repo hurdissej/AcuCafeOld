@@ -4,7 +4,7 @@
 
 (function(){
     angular
-        .module('acuCafe')
+        .module('acuDrinks')
         .factory('drinkService', ['$http', drinkService]);
 
     function drinkService($http){

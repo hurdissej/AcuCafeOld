@@ -90,6 +90,6 @@ namespace acuCafe {
         };
     }
         angular
-            .module('acuCafe')
+            .module('acuDrinks')
             .controller('drinkController', drinkController);
 }
