@@ -5,9 +5,8 @@ var acuCafe;
 (function (acuCafe) {
     'use strict';
     var drinkController = (function () {
-        function drinkController($http, drinkService, optionService, orderService) {
+        function drinkController(drinkService, optionService, orderService) {
             var _this = this;
-            this.$http = $http;
             this.drinkService = drinkService;
             this.optionService = optionService;
             this.orderService = orderService;
@@ -84,12 +83,13 @@ var acuCafe;
             angular.forEach(this.options, function (option) {
                 option.Selected = false;
             });
+            // Order the drink
             this.orderService.postOrders(drinks);
         };
         ;
         return drinkController;
     }());
-    drinkController.$inject = ['$http', 'drinkService', 'optionService', 'orderService'];
+    drinkController.$inject = ['drinkService', 'optionService', 'orderService'];
     acuCafe.drinkController = drinkController;
     angular
         .module('acuCafe')
