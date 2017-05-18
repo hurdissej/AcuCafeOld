@@ -8,10 +8,7 @@ Just clone the repository and open Index.html
 
 I kept this simple and used Angular JS 1.6 as the javascript framework 
 
-Aside from that it is a pretty simple MVC application. 
-
 When making the application I included a route-provider (ng-route) as I originally planned to tab between pages, but then simplified the UI a bit and decided to keep it in incase I wanted to add "pages" in the future.
-Same story with the commented out nav-ribbon
 
 I kept it quite light on CSS and decided to use bootstraps responsive design and modals rather than make my own
 
@@ -27,7 +24,7 @@ I also ran into some cross origin probelms so I used an out the box service to a
 I am using stored minified files for dev purposes but shouldn't in production
 
 **UI**:
-The Pop ups are standard browser pop ups and I would like to make some nice shiny ones
-The UI could also do with tidying up a bit as well
+The alerts are standard browser ones and I would like to make some nice shiny ones
+
 
 
