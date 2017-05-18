@@ -14,13 +14,8 @@ var app;
     function config($routeProvider) {
         $routeProvider
             .when('/', {
-            templateUrl: 'ClientApp/html/Menu.html',
+            templateUrl: 'ClientApp/common/html/Menu.html',
             controller: 'drinkController',
-            controllerAs: 'vm'
-        })
-            .when('/admin', {
-            templateUrl: 'ClientApp/html/directives.html',
-            controller: 'dirControl',
             controllerAs: 'vm'
         })
             .otherwise('/');

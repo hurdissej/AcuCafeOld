@@ -9,7 +9,7 @@
 
     function orderDirective() {
         return {
-            templateUrl: "ClientApp/html/templates/orderPopup.html",
+            templateUrl: "ClientApp/drinks/templates/orderPopup.html",
             restrict: "E",
             replace: true
         };
