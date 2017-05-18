@@ -19,7 +19,7 @@ namespace app {
     function config($routeProvider){
         $routeProvider
             .when('/',{
-                templateUrl: 'ClientApp/common/html/Menu.html',
+                templateUrl: 'ClientApp/drinks/templates/Menu.html',
                 controller: 'drinkController',
                 controllerAs: 'vm'
             })

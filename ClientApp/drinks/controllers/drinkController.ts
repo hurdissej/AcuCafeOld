@@ -20,10 +20,10 @@ namespace acuCafe {
         runningTotal = 0;
         drinks = [];
         options = [];
-        static $inject: string[] = ['drinkService', 'optionService', 'orderService'];
-        constructor(private drinkService: any, private optionService: any, private orderService: any){
+        static $inject: string[] = ['drinkService', 'optionService', 'orderService', 'config'];
+        constructor(private drinkService: any, private optionService: any, private orderService: any, private  config: any){
 
-            this.drinkService.getAllDrinks().then((result) => {
+            drinkService.getAllDrinks().then((result) => {
                 this.drinks = result;
                 this.loadingDrinks = false;
             });

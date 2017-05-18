@@ -1,4 +1,8 @@
-/typings,
-/gulpfile.js,
-/typings.jsonz
+/typings
+/gulpfile.js
+/typings.json
 .vs
+/build
+/dist
+node_modules/
+package.json

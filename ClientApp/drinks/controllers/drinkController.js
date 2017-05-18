@@ -5,11 +5,12 @@ var acuCafe;
 (function (acuCafe) {
     'use strict';
     var drinkController = (function () {
-        function drinkController(drinkService, optionService, orderService) {
+        function drinkController(drinkService, optionService, orderService, config) {
             var _this = this;
             this.drinkService = drinkService;
             this.optionService = optionService;
             this.orderService = orderService;
+            this.config = config;
             this.loadingDrinks = true;
             this.loadingOptions = true;
             this.drink = 0;
@@ -22,7 +23,7 @@ var acuCafe;
             this.runningTotal = 0;
             this.drinks = [];
             this.options = [];
-            this.drinkService.getAllDrinks().then(function (result) {
+            drinkService.getAllDrinks().then(function (result) {
                 _this.drinks = result;
                 _this.loadingDrinks = false;
             });
@@ -89,7 +90,7 @@ var acuCafe;
         ;
         return drinkController;
     }());
-    drinkController.$inject = ['drinkService', 'optionService', 'orderService'];
+    drinkController.$inject = ['drinkService', 'optionService', 'orderService', 'config'];
     acuCafe.drinkController = drinkController;
     angular
         .module('acuDrinks')
