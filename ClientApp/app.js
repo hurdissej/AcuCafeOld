@@ -5,6 +5,5 @@
 var acuCafe;
 (function (acuCafe) {
     'use strict';
-    angular.module('acuCore', ['ngRoute']);
     angular.module('acuCafe', ['acuCore', 'acuDrinks']);
 })(acuCafe || (acuCafe = {}));
