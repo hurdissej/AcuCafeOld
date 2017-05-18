@@ -20,8 +20,8 @@ namespace acuCafe {
         runningTotal = 0;
         drinks = [];
         options = [];
-        static $inject: string[] = ['$http', 'drinkService', 'optionService', 'orderService'];
-        constructor(private $http: angular.IHttpService,private drinkService: any, private optionService: any, private orderService: any){
+        static $inject: string[] = ['drinkService', 'optionService', 'orderService'];
+        constructor(private drinkService: any, private optionService: any, private orderService: any){
 
             this.drinkService.getAllDrinks().then((result) => {
                 this.drinks = result;
@@ -61,13 +61,13 @@ namespace acuCafe {
         public exit(){
             this.runningTotal = 0;
         };
+
         public orderDrink(optionIDs){
             // Create User friendly data version for display
             const userfriendlyDrinks = {
                             "drink": this.userDrink,
                             "options": this.userOptions
                         };
-
             // Create API data
             const drinks = {
                 "drinks": [
@@ -75,7 +75,6 @@ namespace acuCafe {
                             "drinkId": this.drink,
                             "optionIds": this.optionIDs
                         }]};
-
             // Clear UI
             this.allOrders.push(userfriendlyDrinks);
             this.basketEmpty = false;
@@ -86,15 +85,11 @@ namespace acuCafe {
             angular.forEach(this.options, function(option) {
                 option.Selected = false;
             });
-
+            // Order the drink
             this.orderService.postOrders(drinks);
-
         };
-
     }
-
         angular
             .module('acuCafe')
             .controller('drinkController', drinkController);
-
 }
