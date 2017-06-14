@@ -1,4 +1,5 @@
 ## AcuCafe 
+### This is just the client app, the full app now exists at https://github.com/hurdissej/AcuCafe
 
 A *very* small cafe with an online ordering interface
 
